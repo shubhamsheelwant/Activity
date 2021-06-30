@@ -3,14 +3,26 @@ package com.example.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.example.activity.databinding.ActivitySecondBinding
+import com.example.activity.view.FirstFragment
 
 class SecondActivity : AppCompatActivity() {
 
     private val TAG = "SecondActivity"
+
+    private lateinit var binding: ActivitySecondBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         Log.d(TAG, "onCreate: ")
+
+        binding.btnClickMe.setOnClickListener {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(R.id.fragmentView,FirstFragment(),"test")
+            transaction.commit()
+        }
     }
     override fun onStart() {
         super.onStart()
