@@ -1,31 +1,17 @@
 package com.example.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.activity.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivity"
+class SecondActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-
+    private val TAG = "SecondActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        Log.d(TAG, "onCreate:")
-        initListner()
+        setContentView(R.layout.activity_second)
+        Log.d(TAG, "onCreate: ")
     }
-
-    private fun initListner() {
-        binding.btnClickMe.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
     override fun onStart() {
         super.onStart()
         Log.d(TAG, "onStart: ")
